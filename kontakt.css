@@ -1,0 +1,423 @@
+:root {
+    --primary: #00837b;
+    --primary-dark: #00645c;
+    --text-dark: #222;
+    --text-light: #fff;
+    --bg-light: #f6f7f9;
+    --border-light: #e1e3e7;
+}
+
+/* Baza */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    color: var(--text-dark);
+    background: var(--bg-light);
+    line-height: 1.5;
+}
+
+a {
+    color: var(--primary);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Header */
+.main-header {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: #fff;
+    border-bottom: 1px solid var(--border-light);
+}
+
+.header-content {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0.75rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo a {
+    font-weight: 700;
+    font-size: 1.05rem;
+    color: var(--primary-dark);
+}
+
+.main-nav a {
+    margin-left: 1.5rem;
+    font-size: 0.95rem;
+    color: var(--text-dark);
+    position: relative;
+}
+
+.main-nav a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -0.2rem;
+    width: 0;
+    height: 2px;
+    background: var(--primary);
+    transition: width 0.2s ease;
+}
+
+.main-nav a:hover::after,
+.main-nav a.active::after {
+    width: 100%;
+}
+
+/* HERO */
+.hero {
+    min-height: 60vh;
+    background: url("img/carepoint.kontakti.png") center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4.5rem 1.5rem;
+    position: relative;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.25),
+        rgba(0, 0, 0, 0.4)
+    );
+}
+
+.hero-inner {
+    position: relative;
+    z-index: 1;
+    max-width: 700px;
+    text-align: center;
+    color: var(--text-light);
+}
+
+.hero-inner h1 {
+    margin: 0 0 0.5rem;
+    font-size: 2.6rem;
+}
+
+.hero-inner p {
+    margin: 0 0 1.5rem;
+}
+
+.btn {
+    display: inline-block;
+    padding: 0.7rem 1.6rem;
+    border-radius: 999px;
+    border: none;
+    background: #ffffff;
+    color: var(--primary-dark);
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    transition: transform 0.1s ease, box-shadow 0.1s ease, background 0.1s ease;
+}
+
+.btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.25);
+    background: #f4f4f4;
+}
+
+/* Seksionet */
+main > section {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 3rem 1.5rem;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.section-header h2 {
+    margin: 0 0 0.5rem;
+    font-size: 1.9rem;
+    color: var(--primary-dark);
+}
+
+.section-header p {
+    margin: 0.25rem auto 0;
+    max-width: 680px;
+    color: #555;
+}
+
+/* Si të na gjeni */
+.find-us {
+    background: #ffffff;
+    border-radius: 14px;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.06);
+    margin-top: -2rem;
+    position: relative;
+    z-index: 2;
+}
+
+.info-cards {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.5rem;
+}
+
+.info-card {
+    background: #f9fafc;
+    border-radius: 10px;
+    padding: 1.4rem 1.3rem;
+    border: 1px solid var(--border-light);
+}
+
+.info-card h3 {
+    margin: 0 0 0.6rem;
+    color: var(--primary-dark);
+}
+
+.info-card p {
+    margin: 0.15rem 0;
+}
+
+.info-card .small {
+    font-size: 0.85rem;
+    color: #666;
+}
+
+/* Forma e kontaktit */
+.form-card {
+    background: #ffffff;
+    border-radius: 14px;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.06);
+    padding: 2.3rem 2.2rem 2.5rem;
+}
+
+.cp-form {
+    margin-top: 1.6rem;
+}
+
+.cp-row {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.2rem;
+    margin-bottom: 1.2rem;
+}
+
+.cp-row-full {
+    grid-template-columns: 1fr;
+}
+
+.cp-field input,
+.cp-field select,
+.cp-field textarea {
+    width: 100%;
+    border-radius: 8px;
+    border: 1px solid var(--border-light);
+    background: #f8f9fb;
+    padding: 0.9rem 1rem;
+    font-size: 0.95rem;
+    font-family: inherit;
+    outline: none;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+}
+
+.cp-field input::placeholder,
+.cp-field textarea::placeholder {
+    color: #7a7f87;
+}
+
+.cp-field textarea {
+    min-height: 160px;
+    resize: vertical;
+}
+
+.cp-field select {
+    padding-right: 2.4rem;
+    appearance: none;
+    background-image: linear-gradient(45deg, transparent 50%, #80838a 50%),
+                      linear-gradient(135deg, #80838a 50%, transparent 50%);
+    background-position: calc(100% - 16px) 50%, calc(100% - 11px) 50%;
+    background-size: 6px 6px, 6px 6px;
+    background-repeat: no-repeat;
+}
+
+.cp-field input:focus,
+.cp-field select:focus,
+.cp-field textarea:focus {
+    border-color: var(--primary);
+    background: #ffffff;
+    box-shadow: 0 0 0 3px rgba(0, 131, 123, 0.18);
+}
+
+/* telefoni me flamur */
+.cp-phone-inner {
+    display: flex;
+    align-items: stretch;
+    background: #f8f9fb;
+    border-radius: 8px;
+    border: 1px solid var(--border-light);
+    overflow: hidden;
+}
+
+.cp-phone-prefix {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0 0.8rem;
+    background: #ffffff;
+    border-right: 1px solid var(--border-light);
+    font-size: 0.9rem;
+    color: #333;
+}
+
+.cp-phone-prefix img {
+    width: 20px;
+    height: 14px;
+    object-fit: cover;
+}
+
+.cp-phone-inner input {
+    border: none;
+    background: transparent;
+    padding: 0.9rem 0.9rem;
+    flex: 1;
+}
+
+/* butoni i formes */
+.cp-submit {
+    margin-top: 0.6rem;
+    width: 100%;
+    border: none;
+    border-radius: 10px;
+    padding: 0.95rem 1rem;
+    font-size: 1rem;
+    font-weight: 600;
+    background: var(--primary);
+    color: #ffffff;
+    cursor: pointer;
+    transition: background 0.2s ease, box-shadow 0.2s ease, transform 0.1s ease;
+}
+
+.cp-submit:hover {
+    background: var(--primary-dark);
+    box-shadow: 0 12px 26px rgba(0, 0, 0, 0.18);
+    transform: translateY(-1px);
+}
+
+.form-message {
+    margin-top: 0.9rem;
+    font-size: 0.9rem;
+    color: #444;
+}
+
+.form-message.error {
+    color: #c0392b;
+}
+
+.form-message.success {
+    color: #00837b;
+}
+
+/* Pergjigje dhe ankesa */
+.complaints {
+    text-align: center;
+}
+
+/* Harta */
+.map-section {
+    padding-bottom: 3.5rem;
+}
+
+.map-wrapper {
+    position: relative;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--border-light);
+    background: #ffffff;
+}
+
+.map-wrapper iframe {
+    width: 100%;
+    height: 360px;
+    border: none;
+}
+
+.map-hint {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    font-size: 0.95rem;
+    cursor: pointer;
+    z-index: 5;
+    transition: opacity 0.3s ease;
+}
+
+.map-hint.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Footer */
+.footer {
+    border-top: 1px solid var(--border-light);
+    text-align: center;
+    padding: 1rem;
+    font-size: 0.9rem;
+    background: #ffffff;
+}
+
+/* Animacion fade-in */
+.fade-in {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.fade-in.in-view {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .info-cards {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 700px) {
+    .info-cards {
+        grid-template-columns: 1fr;
+    }
+
+    .form-card {
+        padding: 1.8rem 1.3rem 2.1rem;
+    }
+
+    .cp-row {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-inner h1 {
+        font-size: 2.1rem;
+    }
+}
