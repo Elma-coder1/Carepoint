@@ -1,97 +1,5 @@
-:root {
-  --primary: #00837b;
-  --primary-dark: #00645c;
-  --text-dark: #222;
-  --text-light: #fff;
-  --bg-light: #f6f7f9;
-  --border-light: #e1e3e7;
-}
+/* --- HERO--- */
 
-/* RESET / Baza */
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-}
-
-body {
-    background-color: #ffffff;
-    color: var(--text-dark);
-}
-
-/* KONTEINERI */
-.container {
-  width: 90%;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-/* ------- TOP BAR ------- */
-.top-bar {
-  background-color: var(--primary-dark);
-  color: var(--text-light);
-  font-size: 0.9rem;
-}
-
-.top-bar-content {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0.4rem 0;
-}
-
-.top-left span {
-  margin-right: 1.2rem;
-}
-
-.top-right a {
-  color: var(--text-light);
-  margin-left: 0.6rem;
-  text-decoration: none;
-}
-
-.top-right a:hover {
-  opacity: 0.8;
-}
-
-/* ------- HEADER & NAV ------- */
-.main-header {
-  background-color: #ffffff;
-  border-bottom: 1px solid #e3e3e3;
-}
-
-.header-content {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0.9rem 0;
-}
-
-.logo {
-  font-size: 1.6rem;
-  font-weight: 700;
-  color: var(--primary-dark);
-}
-
-.main-nav a {
-  margin-left: 1.5rem;
-  text-decoration: none;
-  color: var(--text-dark);
-  font-weight: 500;
-}
-
-.main-nav a:hover {
-  color: var(--primary);
-}
-
-.main-nav a.active {
-  color: var(--primary);
-  border-bottom: 2px solid var(--primary);
-  padding-bottom: 0.2rem;
-}
-
-/* ---- HERO ---- */
 .hero {
   min-height: 60vh;
   background: url("img/carepoint.kontakti.png") center/cover no-repeat;
@@ -106,7 +14,11 @@ body {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.4));
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.25),
+    rgba(0, 0, 0, 0.4)
+  );
 }
 
 .hero-inner {
@@ -126,6 +38,7 @@ body {
   margin: 0 0 1.5rem;
 }
 
+/* BUTONI NE HERO */
 .btn {
   display: inline-block;
   padding: 0.7rem 1.6rem;
@@ -146,7 +59,8 @@ body {
   background: #f4f4f4;
 }
 
-/* Seksionet */
+/* --- SEKSIONET ---  */
+
 main > section {
   max-width: 1100px;
   margin: 0 auto;
@@ -170,7 +84,8 @@ main > section {
   color: #555;
 }
 
-/* Si të na gjeni */
+/* --- SI TE NA GJENI --- */
+
 .find-us {
   background: #ffffff;
   border-radius: 14px;
@@ -190,7 +105,7 @@ main > section {
   background: #f9fafc;
   border-radius: 10px;
   padding: 1.4rem 1.3rem;
-  border: 1px solid var(--border-light);
+  border: 1px solid #e1e3e7;
 }
 
 .info-card h3 {
@@ -207,7 +122,8 @@ main > section {
   color: #666;
 }
 
-/* Forma e kontaktit */
+/* --- FORMA ---*/
+
 .form-card {
   background: #ffffff;
   border-radius: 14px;
@@ -235,13 +151,14 @@ main > section {
 .cp-field textarea {
   width: 100%;
   border-radius: 8px;
-  border: 1px solid var(--border-light);
+  border: 1px solid #e1e3e7;
   background: #f8f9fb;
   padding: 0.9rem 1rem;
   font-size: 0.95rem;
   font-family: inherit;
   outline: none;
-  transition: border-color 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease,
+    background 0.15s ease;
 }
 
 .cp-field input::placeholder,
@@ -257,7 +174,11 @@ main > section {
 .cp-field select {
   padding-right: 2.4rem;
   appearance: none;
-  background-image: linear-gradient(45deg, transparent 50%, #80838a 50%),
+  background-image: linear-gradient(
+      45deg,
+      transparent 50%,
+      #80838a 50%
+    ),
     linear-gradient(135deg, #80838a 50%, transparent 50%);
   background-position: calc(100% - 16px) 50%, calc(100% - 11px) 50%;
   background-size: 6px 6px, 6px 6px;
@@ -272,13 +193,14 @@ main > section {
   box-shadow: 0 0 0 3px rgba(0, 131, 123, 0.18);
 }
 
-/* telefoni me flamur */
+/* --- TELEFONI --- */
+
 .cp-phone-inner {
   display: flex;
   align-items: stretch;
   background: #f8f9fb;
   border-radius: 8px;
-  border: 1px solid var(--border-light);
+  border: 1px solid #e1e3e7;
   overflow: hidden;
 }
 
@@ -288,7 +210,7 @@ main > section {
   gap: 0.4rem;
   padding: 0 0.8rem;
   background: #ffffff;
-  border-right: 1px solid var(--border-light);
+  border-right: 1px solid #e1e3e7;
   font-size: 0.9rem;
   color: #333;
 }
@@ -302,11 +224,12 @@ main > section {
 .cp-phone-inner input {
   border: none;
   background: transparent;
-  padding: 0.9rem 0.9rem;
+  padding: 0.9rem;
   flex: 1;
 }
 
-/* butoni i formes */
+/* ---BUTONI I FORMES--- */
+
 .cp-submit {
   margin-top: 0.6rem;
   width: 100%;
@@ -318,7 +241,8 @@ main > section {
   background: var(--primary);
   color: #ffffff;
   cursor: pointer;
-  transition: background 0.2s ease, box-shadow 0.2s ease, transform 0.1s ease;
+  transition: background 0.2s ease, box-shadow 0.2s ease,
+    transform 0.1s ease;
 }
 
 .cp-submit:hover {
@@ -338,15 +262,17 @@ main > section {
 }
 
 .form-message.success {
-  color: #00837b;
+  color: var(--primary);
 }
 
-/* Pergjigje dhe ankesa */
+/* ---ANKESA/PERGJIGJJE --- */
+
 .complaints {
   text-align: center;
 }
 
-/* Harta */
+/* --- HARTA --- */
+
 .map-section {
   padding-bottom: 3.5rem;
 }
@@ -356,7 +282,7 @@ main > section {
   border-radius: 14px;
   overflow: hidden;
   box-shadow: 0 16px 40px rgba(0, 0, 0, 0.1);
-  border: 1px solid var(--border-light);
+  border: 1px solid #e1e3e7;
   background: #ffffff;
 }
 
@@ -385,16 +311,8 @@ main > section {
   pointer-events: none;
 }
 
-/* Footer */
-.footer {
-  border-top: 1px solid var(--border-light);
-  text-align: center;
-  padding: 1rem;
-  font-size: 0.9rem;
-  background: #ffffff;
-}
+/* --- ANIMACION --- */
 
-/* Animacion fade-in */
 .fade-in {
   opacity: 0;
   transform: translateY(16px);
@@ -406,7 +324,8 @@ main > section {
   transform: translateY(0);
 }
 
-/* Responsive */
+/* --- RESPONSIVE --- */
+
 @media (max-width: 900px) {
   .info-cards {
     grid-template-columns: repeat(2, minmax(0, 1fr));
