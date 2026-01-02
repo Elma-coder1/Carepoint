@@ -66,8 +66,6 @@
     padding: 0 0.5rem;
 }
 
-/* ------- FAJA DETAJE E STAFIT ------- */
-
 /* Kontejneri kryesor i detajit */
 .staff-detail {
     padding: 2rem 0 3rem 0;
@@ -123,19 +121,6 @@
     margin-bottom: 0.5rem;
 }
 
-/* ------- FOOTER ------- */
-.site-footer {
-    background-color: var(--primary-dark);
-    color: var(--text-light);
-    padding: 1rem 0;
-    margin-top: 1rem;
-    text-align: center;
-    font-size: 0.9rem;
-}
-
-.site-footer p {
-    margin: 0;
-}
 
 /* Responsive */
 @media (max-width: 768px) {
