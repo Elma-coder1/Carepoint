@@ -226,11 +226,18 @@ body {
     padding: 1rem 0;
     margin-top: 1rem;
 }
+.site-footer{
+  text-align: center;
+}
+
+.site-footer p{
+  margin: 0;
+}
 
 .footer-content {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content:center;
     flex-wrap: wrap;
     font-size: 0.9rem;
 }
