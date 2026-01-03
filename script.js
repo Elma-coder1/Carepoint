@@ -31,7 +31,9 @@
         e.preventDefault();
         const card = this.querySelector(".service-card");
 
-        document.querySelectorAll(".service-card").forEach((c) => c.classList.remove("clicked"));
+        document
+          .querySelectorAll(".service-card")
+          .forEach((c) => c.classList.remove("clicked"));
         card?.classList.add("clicked");
 
         setTimeout(() => {
@@ -51,14 +53,14 @@
   };
 
   const serviceMeta = {
-    "Kardiologji": { tags: ["zemër", "gjoks", "presion", "rrahje", "EKG"] },
-    "Pediatri": { tags: ["fëmijë", "temperaturë", "vaksina", "pediatri"] },
-    "Ortopedi": { tags: ["kocka", "frakturë", "nyje", "sport", "dhimbje shpine"] },
-    "Gjinekologji": { tags: ["shtatzëni", "kontroll", "gra", "ultrazë"] },
+    Kardiologji: { tags: ["zemër", "gjoks", "presion", "rrahje", "EKG"] },
+    Pediatri: { tags: ["fëmijë", "temperaturë", "vaksina", "pediatri"] },
+    Ortopedi: { tags: ["kocka", "frakturë", "nyje", "sport", "dhimbje shpine"] },
+    Gjinekologji: { tags: ["shtatzëni", "kontroll", "gra", "ultrazë"] },
     "Laborator analizash": { tags: ["analiza", "gjak", "urinë", "kolesterol", "sheqer"] },
-    "Radiologji": { tags: ["rreze x", "imazh", "ultrazë", "CT", "MRI"] },
+    Radiologji: { tags: ["rreze x", "imazh", "ultrazë", "CT", "MRI"] },
     "Mjekësi familjare": { tags: ["kontroll i përgjithshëm", "këshillim", "referim", "familje"] },
-    "Neurologji": { tags: ["dhimbje koke", "marramendje", "nerv", "mpirje", "migrenë"] }
+    Neurologji: { tags: ["dhimbje koke", "marramendje", "nerv", "mpirje", "migrenë"] }
   };
 
   const services = links.map((a) => {
@@ -159,18 +161,23 @@
   // Scoring (FILTER + REDUCE + CALLBACKS)
   // ----------------------------
   function getSelectedOptionIds() {
-    return Array.from(document.querySelectorAll(".service-finder input[type='checkbox']:checked")).map(
-      (c) => c.value
-    );
+    return Array.from(
+      document.querySelectorAll(".service-finder input[type='checkbox']:checked")
+    ).map((c) => c.value);
   }
 
   function scoreServices(selectedIds) {
     const selected = quizOptions.filter((o) => selectedIds.includes(o.id)); // filter
-    const selectedKeywords = selected.flatMap((o) => o.keywords.map((k) => k.toLowerCase()));
+    const selectedKeywords = selected.flatMap((o) =>
+      o.keywords.map((k) => k.toLowerCase())
+    );
 
     const scored = services.map((s) => {
       const tags = (s.tags || []).map((t) => t.toLowerCase());
-      const score = selectedKeywords.reduce((acc, kw) => acc + (tags.includes(kw) ? 2 : 0), 0); // reduce
+      const score = selectedKeywords.reduce(
+        (acc, kw) => acc + (tags.includes(kw) ? 2 : 0),
+        0
+      ); // reduce
       return { ...s, score };
     });
 
@@ -178,7 +185,9 @@
   }
 
   function clearHighlights() {
-    document.querySelectorAll(".service-card").forEach((c) => c.classList.remove("recommended-card"));
+    document
+      .querySelectorAll(".service-card")
+      .forEach((c) => c.classList.remove("recommended-card"));
     document.querySelectorAll(".recommended-badge").forEach((b) => b.remove());
   }
 
@@ -186,7 +195,9 @@
     clearHighlights();
 
     scored.slice(0, 2).forEach((s, idx) => {
-      const link = links.find((a) => normalize(a.querySelector("h3")?.textContent) === s.title);
+      const link = links.find(
+        (a) => normalize(a.querySelector("h3")?.textContent) === s.title
+      );
       const card = link?.querySelector(".service-card");
       const h3 = link?.querySelector("h3");
       if (!card || !h3) return;
@@ -201,7 +212,9 @@
 
     const first = scored[0];
     if (first) {
-      const link = links.find((a) => normalize(a.querySelector("h3")?.textContent) === first.title);
+      const link = links.find(
+        (a) => normalize(a.querySelector("h3")?.textContent) === first.title
+      );
       link?.scrollIntoView({ behavior: "smooth", block: "center" });
     }
   }
@@ -226,7 +239,9 @@
       },
       { total: 0 }
     );
-    note.textContent = `Totali: ${counts.total} | Klinikë: ${counts.klinike || 0} | Diagnostikë: ${counts.diagnostike || 0}`;
+    note.textContent = `Totali: ${counts.total} | Klinikë: ${
+      counts.klinike || 0
+    } | Diagnostikë: ${counts.diagnostike || 0}`;
 
     // jQuery if available, else fallback
     const hasJQ = !!window.jQuery;
@@ -283,7 +298,9 @@
         top2
           .map(
             (s, i) =>
-              `${i + 1}) <a href="${s.href}">${capWords(s.title)}</a> <span style="opacity:.85">(Score: ${s.score})</span>`
+              `${i + 1}) <a href="${s.href}">${capWords(
+                s.title
+              )}</a> <span style="opacity:.85">(Score: ${s.score})</span>`
           )
           .join("<br>");
 
@@ -292,7 +309,9 @@
     });
 
     clearBtn.addEventListener("click", () => {
-      document.querySelectorAll(".service-finder input[type='checkbox']").forEach((c) => (c.checked = false));
+      document
+        .querySelectorAll(".service-finder input[type='checkbox']")
+        .forEach((c) => (c.checked = false));
       hideError();
       hideResult();
       clearHighlights();
@@ -301,3 +320,4 @@
     console.log("Services JS loaded ✅ (Service Finder + Click animation)");
   });
 })();
+
