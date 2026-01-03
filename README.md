@@ -50,4 +50,5 @@ Ky projekt është realizuar ekskluzivisht për qëllime mësimore dhe demonstro
 
 ## Licenca
 
-Ky projekt përdoret vetëm për qëllime akademike.
+Ky projekt është i licencuar sipas licencës MIT dhe përdoret për qëllime akademike. Detajet gjenden në skedarin LICENSE.
+
