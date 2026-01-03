@@ -2,8 +2,8 @@
 
 .hero {
   position: relative;
-  width: 100%;            /* FIX: mos me u ngushtu */
-  min-height: 100vh;
+  width: 100%;
+  height: 100vh;
   background-image:
     linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.55)),
     url("/img1/ballina.jpg");
@@ -13,12 +13,12 @@
   display: flex;
   align-items: center;
   color: #ffffff;
+  overflow: hidden;
 }
 
-/* i japim hapesire poshte qe kartat mos me mbulu button-at */
 .hero-content {
   width: 100%;
-  padding: 3rem 1rem 10rem;   /* FIX: bottom padding */
+  padding: 3rem 1rem 6rem;
   display: flex;
   flex-direction: column;
   position: relative;
@@ -40,13 +40,13 @@
   margin-bottom: 1.7rem;
 }
 
-/* BUTTONS */
 .hero-buttons {
   display: flex;
   gap: 1rem;
-  margin-bottom: 2.5rem;  /* FIX: mos me i shty shume poshte */
+  margin-bottom: 2.5rem;
 }
 
+/* BUTTONS */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -65,6 +65,7 @@
   background-color: #00837b;
   color: #ffffff;
 }
+
 .btn-primary:hover {
   background-color: #00645c;
   transform: translateY(-3px) scale(1.03);
@@ -74,23 +75,24 @@
   background-color: #ffffff;
   color: #00837b;
 }
+
 .btn-secondary:hover {
   background-color: #f3f4f6;
   transform: translateY(-3px) scale(1.03);
 }
 
-/* KARTAT - i qesim poshte me bottom, jo me top */
+/* HERO CARDS */
 .hero-cards {
   position: absolute;
   left: 50%;
-  bottom: -70px;          /* FIX: kartat dalin pak poshte hero-s */
-  transform: translateX(-50%);
+  bottom: 0;                     /* mbetet te fundi i hero */
+  transform: translate(-50%, 60px); /* <-- KJO i qon poshte */
   display: flex;
   gap: 2rem;
-  align-items: stretch;
   width: min(980px, 92%);
   justify-content: center;
 }
+
 
 .hero-card {
   flex: 1;
@@ -133,14 +135,21 @@
 @media (max-width: 992px) {
   .hero-text h1 { font-size: 2.3rem; }
   .hero-text p { font-size: 1rem; }
-  .hero-cards { gap: 1.2rem; bottom: -60px; }
+   .hero-cards {
+    gap: 1.2rem;
+    transform: translate(-50%, 50px);
+  }
 }
 
 @media (max-width: 768px) {
-  .hero { min-height: auto; padding-bottom: 1.5rem; }
-  .hero-content { padding: 3rem 1rem 2rem; }
+  .hero {
+    height: auto;
+    padding-bottom: 2rem;
+  }
 
-  .hero-buttons { margin-bottom: 2rem; }
+  .hero-content {
+    padding: 3rem 1rem 2rem;
+  }
 
   .hero-cards {
     position: static;
@@ -152,8 +161,14 @@
     gap: 1.2rem;
   }
 
-  .hero-card { width: 90%; max-width: 360px; }
-  .hero-text h1 { font-size: 2rem; }
+  .hero-card {
+    width: 90%;
+    max-width: 360px;
+  }
+
+  .hero-text h1 {
+    font-size: 2rem;
+  }
 }
 
 @media (max-width: 480px) {
@@ -166,3 +181,4 @@
 
   .btn { width: 100%; }
 }
+
