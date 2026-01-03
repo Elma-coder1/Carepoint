@@ -1,5 +1,9 @@
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 // Efekt i lezetshëm kur klikon në një shërbim
+=======
+// Efekt  kur klikon në një shërbim
+>>>>>>> origin/main
 document.querySelectorAll(".service-link").forEach(link => {
     link.addEventListener("click", function (e) {
         e.preventDefault(); // mos hap direkt faqen

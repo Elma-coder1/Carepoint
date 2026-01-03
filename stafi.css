@@ -1,0 +1,171 @@
+
+/* ------- STYLING PËR STAFIN MJEKËSOR ------- */
+
+/* Tools (Search) */
+.staff-tools {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin: 1.2rem 0;
+}
+
+#staffSearch {
+    flex: 1;
+    padding: 0.8rem 1rem;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    outline: none;
+}
+
+#staffSearch:focus {
+    border-color: var(--primary);
+}
+
+.staff-stats {
+    min-width: 180px;
+    text-align: right;
+    color: var(--primary-dark);
+    font-size: 0.95rem;
+}
+
+/* Grid i stafit */
+.staff-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 1.4rem;
+    padding: 1rem 0 2.5rem 0;
+}
+
+/* Lidhjet e kartave të stafit */
+.staff-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+/* Karta e stafit */
+.staff-card {
+    background-color: #ffffff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    cursor: pointer;
+    text-align: center;
+    padding-bottom: 1rem;
+}
+
+.staff-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+.staff-card.clicked {
+    transform: scale(0.97);
+    box-shadow: 0 0 25px rgba(0,0,0,0.25);
+}
+
+/* Imazhi i stafit */
+.staff-image {
+    height: 200px;
+    overflow: hidden;
+    margin-bottom: 0.8rem;
+}
+
+.staff-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Titulli dhe specialiteti */
+.staff-card h3 {
+    font-size: 1.1rem;
+    color: var(--primary-dark);
+    margin-bottom: 0.3rem;
+    padding: 0 0.5rem;
+}
+
+.staff-specialty {
+    color: var(--primary);
+    font-size: 0.9rem;
+    font-weight: 500;
+    padding: 0 0.5rem;
+}
+
+/* Kontejneri kryesor i detajit */
+.staff-detail {
+    padding: 2rem 0 3rem 0;
+}
+
+.staff-detail-content {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 2rem;
+    align-items: flex-start;
+}
+
+/* Pjesa e tekstit */
+.staff-detail-text h2 {
+    margin-bottom: 0.7rem;
+    color: var(--primary-dark);
+}
+
+.staff-detail-text h3 {
+    margin-top: 1.4rem;
+    margin-bottom: 0.4rem;
+    color: var(--primary);
+}
+
+.staff-detail-text p,
+.staff-detail-text ul {
+    line-height: 1.6;
+    font-size: 0.97rem;
+}
+
+.staff-detail-text ul {
+    padding-left: 1.2rem;
+    margin-bottom: 1rem;
+}
+
+/* Imazhi në faqen detaje */
+.staff-detail-image img {
+    width: 100%;
+    border-radius: 12px;
+    object-fit: cover;
+}
+
+/* Info box për kontakt */
+.contact-info {
+    background-color: var(--bg-light);
+    padding: 1.2rem;
+    border-radius: 8px;
+    margin-top: 1.5rem;
+}
+
+.contact-info h4 {
+    color: var(--primary-dark);
+    margin-bottom: 0.5rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .staff-detail-content {
+        grid-template-columns: 1fr;
+    }
+
+    .staff-image {
+        height: 180px;
+    }
+
+    .staff-tools {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .staff-stats {
+        text-align: left;
+    }
+}

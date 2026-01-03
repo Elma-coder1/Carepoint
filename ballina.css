@@ -1,0 +1,218 @@
+
+/* =======================================
+   HERO SECTION (Ballina)
+======================================= */
+
+.hero {
+    position: relative;
+    min-height: 100vh;
+    background-image:
+        linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.55)),
+        url("img/ballina.jpg"); 
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    color: #ffffff;
+}
+
+/* përmbajtja brenda hero */
+.hero-content {
+    width: 100%;
+    padding: 3rem 1rem;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    pointer-events: none; /* kartat s’e pengojnë klikimin në tekst */
+}
+
+/* =================================
+   TEXTI KRYESOR
+================================= */
+
+.hero-text {
+    max-width: 520px;
+    pointer-events: auto;
+}
+
+.hero-text h1 {
+    font-size: 2.9rem;
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+}
+
+.hero-text p {
+    font-size: 1.15rem;
+    margin-bottom: 1.7rem;
+}
+
+/* =================================
+   BUTTONS
+================================= */
+
+.hero-buttons {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 6rem;
+    pointer-events: auto;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.9rem 1.9rem;
+    border-radius: 999px;
+    font-weight: 600;
+    font-size: 1rem;
+    text-decoration: none;
+    cursor: pointer;
+    transition: 0.25s ease;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.18);
+}
+
+.btn-primary {
+    background-color: #00837b;
+    color: #ffffff;
+}
+.btn-primary:hover {
+    background-color: #00645c;
+    transform: translateY(-3px) scale(1.03);
+}
+
+.btn-secondary {
+    background-color: #ffffff;
+    color: #00837b;
+}
+.btn-secondary:hover {
+    background-color: #f3f4f6;
+    transform: translateY(-3px) scale(1.03);
+}
+
+/* =================================
+   KARTAT POSHTË TE HERO
+================================= */
+
+.hero-cards {
+    position: absolute;
+    top: 80%;               /* pozicion perfekt i kartave */
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 2rem;
+    pointer-events: auto;
+}
+
+/* një kartë */
+.hero-card {
+    width: 260px;
+    background: rgba(255,255,255,0.92);
+    padding: 1.8rem 2rem;
+    border-radius: 22px;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.20);
+    backdrop-filter: blur(6px);
+    transition: 0.3s ease;
+    text-align: left;
+}
+
+.hero-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 18px 55px rgba(0,0,0,0.28);
+}
+
+/* ikonat */
+.hero-card i {
+    font-size: 2rem;
+    color: #00837b;
+    margin-bottom: 0.8rem;
+    display: block;
+}
+
+.hero-card h3 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: #003C3C;
+}
+
+.hero-card p {
+    font-size: 0.95rem;
+    color: #4b5563;
+    line-height: 1.4;
+}
+
+
+
+
+
+/* =======================================
+   RESPONSIVE DESIGN
+======================================= */
+
+/* Laptop & Tablet landscape */
+@media (max-width: 992px) {
+
+    .hero-text h1 {
+        font-size: 2.3rem;
+    }
+
+    .hero-text p {
+        font-size: 1rem;
+    }
+
+    .hero-cards {
+        bottom: 6%;   /* më poshtë pak */
+        gap: 1.2rem;
+    }
+}
+
+/* Tablet & Telefon */
+@media (max-width: 768px) {
+
+    .hero {
+        min-height: 115vh; /* më e gjatë që të zërë kartat */
+    }
+
+    .hero-buttons {
+        margin-bottom: 3rem;
+    }
+
+    .hero-cards {
+        position: static;
+        transform: none;
+        margin-top: 2rem;
+        flex-direction: column;
+        align-items: center;
+        gap: 1.2rem;
+    }
+
+    .hero-card {
+        width: 90%;
+         max-width: 360px;
+    }
+
+    .hero-text h1 {
+        font-size: 2rem;
+    }
+}
+
+/* Telefone shumë të vegjël */
+@media (max-width: 480px) {
+
+    .hero-text h1 {
+        font-size: 1.8rem;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .btn {
+        width: 100%;
+        text-align: center;
+    }
+}
+
