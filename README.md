@@ -84,6 +84,4 @@ Ky projekt është realizuar ekskluzivisht për qëllime mësimore në kuadër t
 
 Përmes këtij projekti janë përmbushur kërkesat akademike të lëndës, si në aspektin teknik (implementimi i funksionaliteteve dhe dizajni responsiv), ashtu edhe në aspektin organizativ, përmes punës në grup, përdorimit të GitHub, degëve (branches), commits dhe pull requests.
 
-## Licenca
-
-Ky projekt përdoret vetëm për qëllime akademike dhe mësimore. Çdo përdorim komercial i kodit ose i përmbajtjes së këtij projekti nuk është i lejuar.
+Ky projekt është i licencuar sipas licencës MIT. Shih skedarin LICENSE për detaje.
