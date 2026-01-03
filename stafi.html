@@ -1,3 +1,4 @@
+<!-- stafi.html -->
 <!DOCTYPE html>
 <html lang="sq">
 <head>
@@ -8,6 +9,8 @@
     <!-- Font Awesome -->
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Global + Page CSS -->
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="stafi.css">
 </head>
@@ -58,6 +61,18 @@
 
     <!-- GRID E STAFIT -->
     <main class="container">
+
+        <!-- TOOLS: Search -->
+        <section class="staff-tools">
+            <input
+                type="text"
+                id="staffSearch"
+                placeholder="Kërko sipas emrit ose specialitetit..."
+                aria-label="Kërko staf"
+            />
+            <div class="staff-stats" id="staffStats"></div>
+        </section>
+
         <section class="staff-grid">
 
             <!-- Kardiolog 1 -->
@@ -193,12 +208,13 @@
             </a>
 
         </section>
+
     </main>
 
     <!-- FOOTER -->
-   <footer class="site-footer">
-    <p>&copy; 2025 CarePoint. Të gjitha të drejtat e rezervuara.</p>
-</footer>
+    <footer class="site-footer">
+        <p>&copy; 2025 CarePoint. Të gjitha të drejtat e rezervuara.</p>
+    </footer>
 
     <script src="stafi.js"></script>
 </body>
