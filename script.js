@@ -1,52 +1,60 @@
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-// Efekt i lezetshëm kur klikon në një shërbim
-=======
-// Efekt  kur klikon në një shërbim
->>>>>>> origin/main
-document.querySelectorAll(".service-link").forEach(link => {
-    link.addEventListener("click", function (e) {
-        e.preventDefault(); // mos hap direkt faqen
-=======
 (() => {
+  // ----------------------------
   // Run ONLY on Services page
+  // ----------------------------
   const grid = document.querySelector(".services-grid");
-  const links = [...document.querySelectorAll(".service-link")];
+  const links = Array.from(document.querySelectorAll(".service-link"));
   if (!grid || links.length === 0) return;
->>>>>>> Stashed changes
 
-  // ---------- jQuery loader (for fade/slide effects) ----------
-  function loadjQuery(cb) {
-    if (window.jQuery) return cb();
-    const s = document.createElement("script");
-    s.src = "https://code.jquery.com/jquery-3.7.1.min.js";
-    s.onload = cb;
-    document.head.appendChild(s);
-  }
-
-  // ---------- Helpers (strings) ----------
+  // ----------------------------
+  // Helpers (strings)
+  // ----------------------------
   const normalize = (s) => (s || "").trim().replace(/\s+/g, " ");
   const capWords = (s) =>
     normalize(s)
       .toLowerCase()
       .split(" ")
       .filter(Boolean)
-      .map((w) => w[0]?.toUpperCase() + w.slice(1))
+      .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
       .join(" ");
 
-  // ---------- Build services array from DOM (ARRAY + OBJECTS + MAP) ----------
+  // ----------------------------
+  // Click animation (DOM manipulation)
+  // Keeps normal behavior for ctrl/cmd click
+  // ----------------------------
+  function wireCardClickAnimation() {
+    links.forEach((link) => {
+      link.addEventListener("click", function (e) {
+        // allow open in new tab
+        if (e.ctrlKey || e.metaKey || e.shiftKey || e.button === 1) return;
+
+        e.preventDefault();
+        const card = this.querySelector(".service-card");
+
+        document.querySelectorAll(".service-card").forEach((c) => c.classList.remove("clicked"));
+        card?.classList.add("clicked");
+
+        setTimeout(() => {
+          window.location.href = this.href;
+        }, 250);
+      });
+    });
+  }
+
+  // ----------------------------
+  // Build services array from DOM (ARRAY + OBJECTS + MAP)
+  // ----------------------------
   const inferCategory = (title) => {
     const t = title.toLowerCase();
     if (t.includes("laborator") || t.includes("radiolog")) return "diagnostike";
     return "klinike";
   };
 
-  // keywords per service (objects)
   const serviceMeta = {
     "Kardiologji": { tags: ["zemër", "gjoks", "presion", "rrahje", "EKG"] },
     "Pediatri": { tags: ["fëmijë", "temperaturë", "vaksina", "pediatri"] },
-    "Ortopedi": { tags: ["kocka", "frakturë", "nyje", "dhimbje shpine", "sport"] },
-    "Gjinekologji": { tags: ["shtatzëni", "kontroll", "gra", "dhimbje", "ultrazë"] },
+    "Ortopedi": { tags: ["kocka", "frakturë", "nyje", "sport", "dhimbje shpine"] },
+    "Gjinekologji": { tags: ["shtatzëni", "kontroll", "gra", "ultrazë"] },
     "Laborator analizash": { tags: ["analiza", "gjak", "urinë", "kolesterol", "sheqer"] },
     "Radiologji": { tags: ["rreze x", "imazh", "ultrazë", "CT", "MRI"] },
     "Mjekësi familjare": { tags: ["kontroll i përgjithshëm", "këshillim", "referim", "familje"] },
@@ -63,7 +71,9 @@ document.querySelectorAll(".service-link").forEach(link => {
     };
   });
 
-  // ---------- Quiz options (ARRAY of OBJECTS) ----------
+  // ----------------------------
+  // Quiz options (ARRAY of OBJECTS)
+  // ----------------------------
   const quizOptions = [
     { id: "chest", label: "Dhimbje gjoksi / rrahje zemre", keywords: ["gjoks", "zemër", "presion", "rrahje", "EKG"] },
     { id: "head", label: "Dhimbje koke / marramendje", keywords: ["dhimbje koke", "marramendje", "migrenë", "nerv", "mpirje"] },
@@ -71,11 +81,25 @@ document.querySelectorAll(".service-link").forEach(link => {
     { id: "women", label: "Kontroll për gra / shtatzëni", keywords: ["gra", "shtatzëni", "kontroll", "ultrazë"] },
     { id: "kids", label: "Simptoma te fëmijët", keywords: ["fëmijë", "temperaturë", "vaksina", "pediatri"] },
     { id: "lab", label: "Dua analiza (gjak/urinë/biokimi)", keywords: ["analiza", "gjak", "urinë", "kolesterol", "sheqer"] },
-    { id: "imaging", label: "Dua kontroll me imazheri (X/Ultrazë)", keywords: ["rreze x", "imazh", "ultrazë", "CT", "MRI"] },
+    { id: "imaging", label: "Dua imazheri (X/Ultrazë/CT/MRI)", keywords: ["rreze x", "imazh", "ultrazë", "CT", "MRI"] },
     { id: "general", label: "Kontroll i përgjithshëm / këshillim", keywords: ["kontroll i përgjithshëm", "këshillim", "referim", "familje"] }
   ];
 
-  // ---------- UI injection (DOM manipulation) ----------
+  // ----------------------------
+  // Minimal jQuery loader (for fade/slide)
+  // ----------------------------
+  function loadjQuery(cb) {
+    if (window.jQuery) return cb();
+    const s = document.createElement("script");
+    s.src = "https://code.jquery.com/jquery-3.7.1.min.js";
+    s.onload = cb;
+    s.onerror = cb; // fallback to vanilla if blocked
+    document.head.appendChild(s);
+  }
+
+  // ----------------------------
+  // UI injection (DOM manipulation)
+  // ----------------------------
   function injectUI() {
     const wrapper = document.createElement("section");
     wrapper.className = "service-finder";
@@ -131,25 +155,28 @@ document.querySelectorAll(".service-link").forEach(link => {
     document.head.appendChild(style);
   }
 
-  // ---------- Scoring (FILTER + REDUCE) ----------
+  // ----------------------------
+  // Scoring (FILTER + REDUCE + CALLBACKS)
+  // ----------------------------
   function getSelectedOptionIds() {
-    return [...document.querySelectorAll(".service-finder input[type='checkbox']:checked")].map((c) => c.value);
+    return Array.from(document.querySelectorAll(".service-finder input[type='checkbox']:checked")).map(
+      (c) => c.value
+    );
   }
 
   function scoreServices(selectedIds) {
-    const selected = quizOptions.filter((o) => selectedIds.includes(o.id));
+    const selected = quizOptions.filter((o) => selectedIds.includes(o.id)); // filter
     const selectedKeywords = selected.flatMap((o) => o.keywords.map((k) => k.toLowerCase()));
 
     const scored = services.map((s) => {
       const tags = (s.tags || []).map((t) => t.toLowerCase());
-      const score = selectedKeywords.reduce((acc, kw) => acc + (tags.includes(kw) ? 2 : 0), 0);
+      const score = selectedKeywords.reduce((acc, kw) => acc + (tags.includes(kw) ? 2 : 0), 0); // reduce
       return { ...s, score };
     });
 
     return scored.filter((s) => s.score > 0).sort((a, b) => b.score - a.score);
   }
 
-  // ---------- Highlight cards ----------
   function clearHighlights() {
     document.querySelectorAll(".service-card").forEach((c) => c.classList.remove("recommended-card"));
     document.querySelectorAll(".recommended-badge").forEach((b) => b.remove());
@@ -165,6 +192,7 @@ document.querySelectorAll(".service-link").forEach(link => {
       if (!card || !h3) return;
 
       card.classList.add("recommended-card");
+
       const badge = document.createElement("span");
       badge.className = "recommended-badge";
       badge.textContent = idx === 0 ? "Rekomandim #1" : "Rekomandim #2";
@@ -178,36 +206,18 @@ document.querySelectorAll(".service-link").forEach(link => {
     }
   }
 
-  // ---------- Keep click animation + navigate normally ----------
-  function wireCardClickAnimation() {
-    links.forEach((link) => {
-      link.addEventListener("click", function (e) {
-        e.preventDefault();
-        const card = this.querySelector(".service-card");
-
-        document.querySelectorAll(".service-card").forEach((c) => c.classList.remove("clicked"));
-        card?.classList.add("clicked");
-
-        setTimeout(() => {
-          window.location.href = this.href;
-        }, 250);
-      });
-    });
-  }
-
-  // ---------- Init (with jQuery effects) ----------
+  // ----------------------------
+  // Init
+  // ----------------------------
+  wireCardClickAnimation();
   loadjQuery(() => {
     injectUI();
-    wireCardClickAnimation();
 
-    const $ = window.jQuery;
     const btn = document.getElementById("sfBtn");
     const clearBtn = document.getElementById("sfClear");
-    const errorBox = $("#sfError");
-    const resultBox = $("#sfResult");
     const note = document.getElementById("sfNote");
 
-    // quick stats using reduce
+    // quick stats using reduce (again)
     const counts = services.reduce(
       (acc, s) => {
         acc.total++;
@@ -218,28 +228,52 @@ document.querySelectorAll(".service-link").forEach(link => {
     );
     note.textContent = `Totali: ${counts.total} | Klinikë: ${counts.klinike || 0} | Diagnostikë: ${counts.diagnostike || 0}`;
 
+    // jQuery if available, else fallback
+    const hasJQ = !!window.jQuery;
+    const $ = window.jQuery;
+
+    const showError = (html) => {
+      const el = document.getElementById("sfError");
+      el.innerHTML = html;
+      if (hasJQ) $(el).stop(true, true).slideDown(160);
+      else el.style.display = "block";
+    };
+
+    const hideError = () => {
+      const el = document.getElementById("sfError");
+      if (hasJQ) $(el).stop(true, true).slideUp(120);
+      else el.style.display = "none";
+    };
+
+    const showResult = (html) => {
+      const el = document.getElementById("sfResult");
+      el.innerHTML = html;
+      if (hasJQ) $(el).stop(true, true).fadeIn(140);
+      else el.style.display = "block";
+    };
+
+    const hideResult = () => {
+      const el = document.getElementById("sfResult");
+      if (hasJQ) $(el).stop(true, true).fadeOut(120);
+      else el.style.display = "none";
+    };
+
+    // Validation + recommendation
     btn.addEventListener("click", () => {
       const selectedIds = getSelectedOptionIds();
 
-      // VALIDATION
       if (selectedIds.length === 0) {
-        resultBox.stop(true, true).hide();
-        errorBox
-          .html("Zgjidh së paku <b>1 opsion</b> që të bëjmë rekomandimin.")
-          .stop(true, true)
-          .slideDown(180);
+        hideResult();
+        showError("Zgjidh së paku <b>1 opsion</b> që të bëjmë rekomandimin.");
         return;
       }
 
-      errorBox.stop(true, true).slideUp(120);
+      hideError();
 
       const scored = scoreServices(selectedIds);
       if (scored.length === 0) {
         clearHighlights();
-        resultBox
-          .html("Nuk u gjet rekomandim i saktë. Provo me zgjedh opsione tjera.")
-          .stop(true, true)
-          .fadeIn(160);
+        showResult("Nuk u gjet rekomandim i saktë. Provo me zgjedh opsione tjera.");
         return;
       }
 
@@ -254,18 +288,16 @@ document.querySelectorAll(".service-link").forEach(link => {
           .join("<br>");
 
       highlightTop(scored);
-      resultBox.html(html).stop(true, true).fadeIn(160);
+      showResult(html);
     });
 
     clearBtn.addEventListener("click", () => {
       document.querySelectorAll(".service-finder input[type='checkbox']").forEach((c) => (c.checked = false));
-      errorBox.stop(true, true).slideUp(120);
-      resultBox.stop(true, true).fadeOut(120);
+      hideError();
+      hideResult();
       clearHighlights();
     });
 
-    console.log("Service Finder active ✅");
+    console.log("Services JS loaded ✅ (Service Finder + Click animation)");
   });
 })();
-
-
