@@ -1,0 +1,168 @@
+/* styles/ballina.css */
+
+.hero {
+  position: relative;
+  width: 100%;            /* FIX: mos me u ngushtu */
+  min-height: 100vh;
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.55)),
+    url("/img1/ballina.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  color: #ffffff;
+}
+
+/* i japim hapesire poshte qe kartat mos me mbulu button-at */
+.hero-content {
+  width: 100%;
+  padding: 3rem 1rem 10rem;   /* FIX: bottom padding */
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.hero-text {
+  max-width: 520px;
+}
+
+.hero-text h1 {
+  font-size: 2.9rem;
+  font-weight: 800;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+.hero-text p {
+  font-size: 1.15rem;
+  margin-bottom: 1.7rem;
+}
+
+/* BUTTONS */
+.hero-buttons {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2.5rem;  /* FIX: mos me i shty shume poshte */
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.9rem 1.9rem;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 1rem;
+  text-decoration: none;
+  cursor: pointer;
+  transition: 0.25s ease;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.18);
+}
+
+.btn-primary {
+  background-color: #00837b;
+  color: #ffffff;
+}
+.btn-primary:hover {
+  background-color: #00645c;
+  transform: translateY(-3px) scale(1.03);
+}
+
+.btn-secondary {
+  background-color: #ffffff;
+  color: #00837b;
+}
+.btn-secondary:hover {
+  background-color: #f3f4f6;
+  transform: translateY(-3px) scale(1.03);
+}
+
+/* KARTAT - i qesim poshte me bottom, jo me top */
+.hero-cards {
+  position: absolute;
+  left: 50%;
+  bottom: -70px;          /* FIX: kartat dalin pak poshte hero-s */
+  transform: translateX(-50%);
+  display: flex;
+  gap: 2rem;
+  align-items: stretch;
+  width: min(980px, 92%);
+  justify-content: center;
+}
+
+.hero-card {
+  flex: 1;
+  max-width: 300px;
+  background: rgba(255, 255, 255, 0.92);
+  padding: 1.8rem 2rem;
+  border-radius: 22px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(6px);
+  transition: 0.3s ease;
+  text-align: left;
+}
+
+.hero-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 18px 55px rgba(0, 0, 0, 0.28);
+}
+
+.hero-card i {
+  font-size: 2rem;
+  color: #00837b;
+  margin-bottom: 0.8rem;
+  display: block;
+}
+
+.hero-card h3 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: #003c3c;
+}
+
+.hero-card p {
+  font-size: 0.95rem;
+  color: #4b5563;
+  line-height: 1.4;
+}
+
+/* RESPONSIVE */
+@media (max-width: 992px) {
+  .hero-text h1 { font-size: 2.3rem; }
+  .hero-text p { font-size: 1rem; }
+  .hero-cards { gap: 1.2rem; bottom: -60px; }
+}
+
+@media (max-width: 768px) {
+  .hero { min-height: auto; padding-bottom: 1.5rem; }
+  .hero-content { padding: 3rem 1rem 2rem; }
+
+  .hero-buttons { margin-bottom: 2rem; }
+
+  .hero-cards {
+    position: static;
+    transform: none;
+    width: 100%;
+    margin-top: 1.5rem;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.2rem;
+  }
+
+  .hero-card { width: 90%; max-width: 360px; }
+  .hero-text h1 { font-size: 2rem; }
+}
+
+@media (max-width: 480px) {
+  .hero-text h1 { font-size: 1.8rem; }
+
+  .hero-buttons {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .btn { width: 100%; }
+}
