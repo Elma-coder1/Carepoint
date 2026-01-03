@@ -1,4 +1,33 @@
+
 /* ------- STYLING PËR STAFIN MJEKËSOR ------- */
+
+/* Tools (Search) */
+.staff-tools {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin: 1.2rem 0;
+}
+
+#staffSearch {
+    flex: 1;
+    padding: 0.8rem 1rem;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    outline: none;
+}
+
+#staffSearch:focus {
+    border-color: var(--primary);
+}
+
+.staff-stats {
+    min-width: 180px;
+    text-align: right;
+    color: var(--primary-dark);
+    font-size: 0.95rem;
+}
 
 /* Grid i stafit */
 .staff-grid {
@@ -121,14 +150,22 @@
     margin-bottom: 0.5rem;
 }
 
-
 /* Responsive */
 @media (max-width: 768px) {
     .staff-detail-content {
         grid-template-columns: 1fr;
     }
-    
+
     .staff-image {
         height: 180px;
+    }
+
+    .staff-tools {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .staff-stats {
+        text-align: left;
     }
 }
