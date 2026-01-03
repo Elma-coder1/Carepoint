@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', function() {
   // Vendos statistikat
   if (statsBox) {
     const uniqueSpecialties = Object.keys(specialtyCounts).length;
-    statsBox.textContent = `${staffData.length} staf • ${uniqueSpecialties} specialitete`;
+    statsBox.textContent = `${staffData.length} staf • ${uniqueSpecialties} specializime`;
   }
 
   if (searchInput) {
