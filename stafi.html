@@ -1,3 +1,4 @@
+<!-- stafi.html -->
 <!DOCTYPE html>
 <html lang="sq">
 <head>
@@ -8,6 +9,8 @@
     <!-- Font Awesome -->
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Global + Page CSS -->
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="stafi.css">
 </head>
@@ -58,6 +61,18 @@
 
     <!-- GRID E STAFIT -->
     <main class="container">
+
+        <!-- TOOLS: Search -->
+        <section class="staff-tools">
+            <input
+                type="text"
+                id="staffSearch"
+                placeholder="Kërko sipas emrit ose specializimit..."
+                aria-label="Kërko staf"
+            />
+            <div class="staff-stats" id="staffStats"></div>
+        </section>
+
         <section class="staff-grid">
 
             <!-- Kardiolog 1 -->
@@ -193,13 +208,35 @@
             </a>
 
         </section>
+
     </main>
 
     <!-- FOOTER -->
-   <footer class="site-footer">
-    <p>&copy; 2025 CarePoint. Të gjitha të drejtat e rezervuara.</p>
-</footer>
+    <footer class="site-footer">
+        <p>&copy; 2025 CarePoint. Të gjitha të drejtat e rezervuara.</p>
+    </footer>
+
+    <!-- COOKIE BANNER -->
+<div id="cookie-banner" class="cookie-banner" hidden>
+  <div class="cookie-banner__content">
+    <p class="cookie-banner__text">
+      CarePoint përdor cookies për të përmirësuar funksionalitetin e faqes dhe për të analizuar përdorimin e saj.
+      Duke klikuar “Prano”, ju pajtoheni me përdorimin e cookies.
+    </p>
+
+    <div class="cookie-banner__actions">
+      <button id="cookie-accept" class="cookie-btn cookie-btn--primary" type="button">
+        Prano
+      </button>
+      <button id="cookie-dismiss" class="cookie-btn cookie-btn--secondary" type="button">
+        Refuzo
+      </button>
+    </div>
+  </div>
+</div>
 
     <script src="stafi.js"></script>
+    <script src="cookies.js"></script>
+
 </body>
 </html>
